@@ -38,26 +38,27 @@ body {
     "Meiryo",
     sans-serif;
 
+  color: #603d32;
+
   background:
     linear-gradient(
       180deg,
-      #fff5f8 0%,
-      #fffaf7 48%,
-      #eefaff 100%
+      #fff7f9 0%,
+      #fffdf9 50%,
+      #f0fbff 100%
     );
-
-  color: #5b3d35;
 }
 
 button {
   font-family: inherit;
-  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 
 /* ==================================================
    アプリ全体
-   スマホ画面内に固定
+   画面内固定・スクロール禁止
 ================================================== */
 
 .app {
@@ -65,16 +66,15 @@ button {
   height: 100dvh;
 
   padding:
-    max(8px, env(safe-area-inset-top))
-    max(10px, env(safe-area-inset-right))
-    max(8px, env(safe-area-inset-bottom))
-    max(10px, env(safe-area-inset-left));
+    max(6px, env(safe-area-inset-top))
+    max(8px, env(safe-area-inset-right))
+    max(6px, env(safe-area-inset-bottom))
+    max(8px, env(safe-area-inset-left));
+
+  overflow: hidden;
 
   display: flex;
   justify-content: center;
-  align-items: stretch;
-
-  overflow: hidden;
 }
 
 .phone {
@@ -83,31 +83,6 @@ button {
   height: 100%;
 
   overflow: hidden;
-}
-
-
-/* ==================================================
-   共通ヘッダー
-================================================== */
-
-.header {
-  height: 7%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 5px;
-}
-
-.header-title {
-  font-size: clamp(18px, 5vw, 24px);
-  font-weight: 900;
-}
-
-.header-time {
-  font-size: clamp(18px, 5vw, 22px);
-  font-weight: 900;
 }
 
 
@@ -125,34 +100,71 @@ button {
   overflow: hidden;
 }
 
+
+/* ==================================================
+   ヘッダー
+================================================== */
+
+.header {
+  height: 7%;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5px;
+}
+
+.header-title {
+  font-size: clamp(20px, 5.8vw, 28px);
+  font-weight: 1000;
+
+  color: #603d32;
+}
+
+.header-time {
+  font-size: clamp(20px, 5.8vw, 27px);
+  font-weight: 1000;
+
+  color: #603d32;
+}
+
+
+/* ==================================================
+   ホームメイン
+================================================== */
+
 .welcome {
   width: 100%;
   height: 93%;
 
+  flex-shrink: 0;
+
   display: flex;
   flex-direction: column;
+
   justify-content: space-between;
+
+  padding:
+    1.2%
+    2.5%
+    1.5%;
+
+  border-radius: 28px;
 
   background:
     linear-gradient(
       180deg,
-      #fff9fb 0%,
+      #fffafc 0%,
       #ffffff 100%
     );
 
-  border-radius: 28px;
-
-  padding:
-    2.5%
-    3.5%
-    2.5%;
-
-  text-align: center;
+  border: 2px solid #ffd8e5;
 
   box-shadow:
-    0 7px 22px rgba(100, 80, 80, .12);
-
-  border: 2px solid #ffd8e3;
+    0 7px 25px rgba(110, 80, 80, .10);
 
   overflow: hidden;
 }
@@ -160,68 +172,79 @@ button {
 
 /* ==================================================
    兄貴の写真
-   四角・角丸バナー
+   横長・角丸バナー
 ================================================== */
 
 .photo {
   display: block;
 
   width: 100%;
-  height: 26%;
 
-  min-height: 0;
+  height: 24%;
 
-  margin: 0 auto;
+  flex-shrink: 0;
 
   object-fit: cover;
 
-  border-radius: 22px;
+  border-radius: 24px;
 
   border: 4px solid #ffffff;
 
   box-shadow:
-    0 5px 16px rgba(255, 120, 150, .23);
+    0 5px 15px rgba(255, 115, 150, .22);
 
   background: #e9f8ff;
 }
 
 
 /* ==================================================
-   おはようメッセージ
-   1行目：おはよう！
-   2行目：〇〇〇だよ！
+   おはようバナー
+   写真との間に少し隙間
 ================================================== */
 
 .greeting {
   width: 100%;
 
-  min-height: 19%;
+  height: 22%;
 
-  margin: 1% auto;
+  flex-shrink: 0;
 
-  padding: 5px;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+
+  padding: 4px;
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
-  border-radius: 22px;
+  text-align: center;
+
+  border-radius: 25px;
 
   background:
     linear-gradient(
       135deg,
-      #fff0f5,
-      #fff9fb
+      #fff1f6 0%,
+      #fffafd 100%
     );
 
-  border: 2px solid #ffcbd9;
+  border: 3px solid #ffc6d8;
 
-  color: #f05278;
+  box-shadow:
+    0 6px 15px rgba(255, 100, 140, .10);
+}
 
-  font-size: clamp(27px, 7.5vw, 40px);
+.greeting-line {
+  display: block;
 
-  line-height: 1.08;
+  width: 100%;
+
+  line-height: 1.05;
+
+  color: #f33e70;
 
   font-weight: 1000;
 
@@ -229,14 +252,16 @@ button {
 
   text-shadow:
     0 2px 0 #ffffff;
-
-  box-shadow:
-    0 4px 12px rgba(255, 100, 140, .10);
 }
 
-.greeting-line {
-  display: block;
-  width: 100%;
+.greeting-line:first-child {
+  font-size: clamp(34px, 9.5vw, 48px);
+}
+
+.greeting-line:last-child {
+  font-size: clamp(33px, 9vw, 46px);
+
+  margin-top: 2px;
 }
 
 
@@ -244,23 +269,39 @@ button {
    日付
 ================================================== */
 
-.info-card {
+.date-card {
   width: 100%;
 
-  background: #ffffff;
+  height: 11%;
 
-  border-radius: 17px;
+  flex-shrink: 0;
 
-  padding: 7px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 8px;
+
+  background: #fffdf7;
+
+  border: 3px solid #ffe5b7;
+
+  border-radius: 20px;
 
   box-shadow:
-    0 3px 9px rgba(80, 80, 80, .07);
+    0 4px 10px rgba(120, 90, 60, .07);
 }
 
 .date {
-  font-size: clamp(19px, 5.5vw, 25px);
-  line-height: 1.15;
-  font-weight: 900;
+  font-size: clamp(22px, 6.5vw, 31px);
+
+  line-height: 1;
+
+  font-weight: 1000;
+
+  color: #5c392d;
+
+  white-space: nowrap;
 }
 
 
@@ -269,26 +310,55 @@ button {
 ================================================== */
 
 .weather {
+  width: 100%;
+
+  height: 16%;
+
+  flex-shrink: 0;
+
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 8px;
+  gap: 10px;
 
-  font-size: clamp(16px, 4.5vw, 22px);
+  padding: 4px 8px;
 
-  font-weight: 800;
+  background: #fffefa;
+
+  border: 3px solid #ffe6bd;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 4px 10px rgba(120, 90, 60, .07);
 }
 
 .weather-icon {
-  font-size: clamp(34px, 10vw, 48px);
+  font-size: clamp(42px, 12vw, 58px);
+
   line-height: 1;
 }
 
-.weather strong {
-  font-size: clamp(25px, 7vw, 30px);
-  color: #3999e8;
+.weather-text {
+  text-align: center;
+
+  font-size: clamp(18px, 5vw, 25px);
+
+  font-weight: 1000;
+
+  line-height: 1.05;
+}
+
+.weather-text strong {
+  display: inline-block;
+
+  font-size: clamp(31px, 9vw, 42px);
+
+  color: #168ce8;
+
+  line-height: 1;
 }
 
 
@@ -297,63 +367,76 @@ button {
 ================================================== */
 
 .encourage {
-  font-size: clamp(14px, 4vw, 18px);
-  line-height: 1.15;
+  width: 100%;
 
-  font-weight: 700;
+  height: 10%;
 
-  padding: 2px 0;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  font-size: clamp(17px, 5vw, 24px);
+
+  line-height: 1.1;
+
+  font-weight: 1000;
+
+  color: #603d32;
 }
 
 
 /* ==================================================
-   はじめる
-   ホーム画面の最下部
+   はじめるボタン
 ================================================== */
 
 .start-button {
   width: 100%;
 
-  min-height: 10%;
+  height: 13%;
 
-  margin: 0;
-
-  border: 0;
+  flex-shrink: 0;
 
   border-radius: 50px;
 
-  padding: 8px;
+  color: #ffffff;
 
   background:
     linear-gradient(
       135deg,
-      #ff6f91,
-      #ff4f78
+      #ff6d91 0%,
+      #ff3f70 100%
     );
 
-  color: #ffffff;
-
-  font-size: clamp(22px, 6.5vw, 27px);
+  font-size: clamp(27px, 8vw, 38px);
 
   font-weight: 1000;
 
   box-shadow:
-    0 6px 14px rgba(255, 80, 120, .25);
+    0 7px 16px rgba(255, 70, 110, .27);
+
+  text-shadow:
+    0 2px 2px rgba(180, 30, 70, .18);
+
+  transition:
+    transform .1s ease;
 }
 
 .start-button:active {
-  transform: scale(.98);
+  transform: scale(.97);
 }
 
 
 /* ==================================================
    質問画面
-   1画面固定
 ================================================== */
 
 .question-screen {
   width: 100%;
-  height: 100%;
+  height: 100dvh;
 
   display: none;
 
@@ -367,77 +450,101 @@ button {
   width: 100%;
   height: 100%;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background:
-    rgba(255, 255, 255, .98);
-
-  border-radius: 28px;
-
   padding:
     5%
     4%;
 
-  box-shadow:
-    0 8px 24px rgba(90, 80, 80, .12);
+  display: flex;
+  flex-direction: column;
 
-  border: 2px solid #ffd8e3;
+  align-items: center;
+  justify-content: center;
 
   text-align: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffafd,
+      #ffffff
+    );
+
+  border-radius: 28px;
+
+  border: 2px solid #ffd6e2;
+
+  box-shadow:
+    0 8px 24px rgba(90, 80, 80, .12);
 
   overflow: hidden;
 }
 
+
+/* ==================================================
+   質問アイコン
+================================================== */
+
 .question-icon {
-  font-size: clamp(55px, 17vw, 78px);
+  font-size: clamp(60px, 18vw, 90px);
 
   line-height: 1;
 
   margin-bottom: 2%;
 }
 
+
+/* ==================================================
+   質問本文
+================================================== */
+
 .question {
   width: 100%;
 
-  font-size: clamp(29px, 8.5vw, 36px);
+  margin:
+    1%
+    0
+    4%;
+
+  font-size: clamp(31px, 9vw, 42px);
 
   line-height: 1.25;
 
   font-weight: 1000;
 
-  margin: 1% 0 4%;
+  color: #603d32;
 }
 
 
 /* ==================================================
-   はい・いいえ
+   回答ボタン
 ================================================== */
 
 .answer {
   width: 100%;
 
-  min-height: 17%;
+  height: 17%;
 
-  border: 0;
+  flex-shrink: 0;
+
+  margin-top: 3%;
 
   border-radius: 50px;
 
-  margin-top: 2.5%;
-
   color: #ffffff;
 
-  font-size: clamp(27px, 8vw, 32px);
+  font-size: clamp(29px, 8.5vw, 38px);
 
   font-weight: 1000;
 
   box-shadow:
-    0 5px 12px rgba(0, 0, 0, .12);
+    0 6px 13px rgba(0, 0, 0, .12);
 
   transition:
     transform .1s ease;
+}
+
+.answer:active {
+  transform: scale(.97);
 }
 
 .yes {
@@ -445,7 +552,7 @@ button {
     linear-gradient(
       135deg,
       #ff6688,
-      #f94670
+      #f84270
     );
 }
 
@@ -453,13 +560,9 @@ button {
   background:
     linear-gradient(
       135deg,
-      #55aef5,
-      #338ee2
+      #55b0f5,
+      #328ee0
     );
-}
-
-.answer:active {
-  transform: scale(.98);
 }
 
 
@@ -469,7 +572,7 @@ button {
 
 .thanks {
   width: 100%;
-  height: 100%;
+  height: 100dvh;
 
   display: none;
 
@@ -482,105 +585,137 @@ button {
 .thanks-card {
   width: 100%;
 
+  padding: 30px 15px;
+
+  text-align: center;
+
+  border-radius: 28px;
+
   background:
     linear-gradient(
       180deg,
-      #fff9fc,
+      #fff8fb,
       #ffffff
     );
 
   border: 2px solid #ffd6e2;
-
-  border-radius: 28px;
-
-  text-align: center;
-
-  padding: 30px 18px;
 
   box-shadow:
     0 8px 24px rgba(90, 80, 80, .12);
 }
 
 .thanks-title {
-  font-size: clamp(30px, 9vw, 36px);
+  font-size: clamp(35px, 10vw, 46px);
 
   font-weight: 1000;
 
-  color: #ed6684;
+  color: #ef5278;
 }
 
 .thanks-text {
-  font-size: clamp(18px, 5.5vw, 22px);
+  margin-top: 14px;
+
+  font-size: clamp(19px, 5.5vw, 25px);
 
   line-height: 1.5;
 
-  font-weight: 800;
-
-  margin-top: 12px;
+  font-weight: 900;
 }
 
 
 /* ==================================================
-   特に高さの低いスマホ
+   小さい高さのスマホ
 ================================================== */
 
 @media (max-height: 700px) {
 
+  .header {
+    height: 6%;
+  }
+
   .welcome {
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
+    height: 94%;
+
+    padding-top: 1%;
+    padding-bottom: 1%;
   }
 
   .photo {
-    height: 23%;
+    height: 22%;
   }
 
   .greeting {
-    min-height: 17%;
-    font-size: clamp(25px, 7vw, 34px);
+    height: 20%;
   }
 
-  .info-card {
-    padding: 5px 7px;
+  .greeting-line:first-child {
+    font-size: clamp(29px, 8vw, 39px);
+  }
+
+  .greeting-line:last-child {
+    font-size: clamp(28px, 7.8vw, 38px);
+  }
+
+  .date-card {
+    height: 11%;
+  }
+
+  .date {
+    font-size: clamp(19px, 5.5vw, 25px);
+  }
+
+  .weather {
+    height: 16%;
+  }
+
+  .weather-icon {
+    font-size: 38px;
+  }
+
+  .weather-text {
+    font-size: 16px;
+  }
+
+  .weather-text strong {
+    font-size: 29px;
   }
 
   .encourage {
-    font-size: 13px;
+    height: 8%;
+    font-size: 15px;
   }
 
   .start-button {
-    min-height: 9%;
-    font-size: 22px;
-  }
-
-  .question-icon {
-    font-size: 58px;
-  }
-
-  .question {
-    font-size: 28px;
-  }
-
-  .answer {
-    min-height: 16%;
-    font-size: 27px;
+    height: 12%;
+    font-size: 26px;
   }
 }
 
 
 /* ==================================================
-   さらに小さい高さ
+   とても小さい画面
 ================================================== */
 
 @media (max-height: 600px) {
 
   .photo {
-    height: 21%;
+    height: 20%;
   }
 
   .greeting {
-    min-height: 16%;
-    font-size: 25px;
+    height: 19%;
+  }
+
+  .greeting-line:first-child {
+    font-size: 27px;
+  }
+
+  .greeting-line:last-child {
+    font-size: 26px;
+  }
+
+  .date-card {
+    height: 11%;
   }
 
   .date {
@@ -588,15 +723,19 @@ button {
   }
 
   .weather {
-    font-size: 15px;
+    height: 15%;
   }
 
   .weather-icon {
     font-size: 30px;
   }
 
-  .weather strong {
-    font-size: 22px;
+  .weather-text {
+    font-size: 13px;
+  }
+
+  .weather-text strong {
+    font-size: 23px;
   }
 
   .encourage {
@@ -604,8 +743,21 @@ button {
   }
 
   .start-button {
-    min-height: 9%;
-    font-size: 21px;
+    height: 12%;
+    font-size: 23px;
+  }
+
+  .question-icon {
+    font-size: 55px;
+  }
+
+  .question {
+    font-size: 28px;
+  }
+
+  .answer {
+    height: 16%;
+    font-size: 27px;
   }
 }
 
@@ -628,6 +780,8 @@ button {
 <div id="homeScreen">
 
 
+  <!-- ヘッダー -->
+
   <div class="header">
 
     <div class="header-title">
@@ -645,23 +799,25 @@ button {
   </div>
 
 
+  <!-- メイン -->
+
   <section class="welcome">
 
 
     <!-- ==================================================
          兄貴の写真
-         後で写真を差し替え
+         後でここを自分の写真に差し替え
     ================================================== -->
 
     <img
       class="photo"
-      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800"
+      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900"
       alt="お兄さん">
 
 
     <!-- ==================================================
-         おはようメッセージ
-         〇〇〇 ← 後で3文字に差し替え
+         おはようバナー
+         〇〇〇 ← ここを後で3文字に変更
     ================================================== -->
 
     <div class="greeting">
@@ -681,7 +837,7 @@ button {
          日付
     ================================================== -->
 
-    <div class="info-card">
+    <div class="date-card">
 
       <div
         class="date"
@@ -696,15 +852,16 @@ button {
 
     <!-- ==================================================
          天気
+         現在は仮表示
     ================================================== -->
 
-    <div class="info-card weather">
+    <div class="weather">
 
       <div class="weather-icon">
         ☀️
       </div>
 
-      <div>
+      <div class="weather-text">
 
         今日の天気は<br>
 
@@ -731,15 +888,14 @@ button {
 
 
     <!-- ==================================================
-         ホーム画面の最下部
-         ここで終了
+         ホーム画面の最後
     ================================================== -->
 
     <button
       class="start-button"
       onclick="startCheck()">
 
-      はじめる　›
+      ▶ はじめる　›
 
     </button>
 
@@ -904,7 +1060,7 @@ let answers = [];
 
 
 /* ==================================================
-   「はじめる」
+   はじめる
 ================================================== */
 
 function startCheck() {
@@ -941,7 +1097,7 @@ function showQuestion() {
 
   document
     .getElementById("questionIcon")
-    .innerHTML =
+    .textContent =
     question.icon;
 
 
@@ -955,7 +1111,7 @@ function showQuestion() {
 
 /* ==================================================
    はい／いいえ
-   押したら次の画面へ
+   押したら即次の質問
 ================================================== */
 
 function answer(value) {
@@ -976,6 +1132,8 @@ function answer(value) {
   currentQuestion++;
 
 
+  /* 全質問終了 */
+
   if (
     currentQuestion >=
     questions.length
@@ -992,6 +1150,12 @@ function answer(value) {
       .style.display = "flex";
 
 
+    /*
+      現段階では確認用。
+      後でFirebase等に接続して
+      兄貴のスマホへ送信する。
+    */
+
     console.log(
       "回答結果:",
       answers
@@ -1003,13 +1167,15 @@ function answer(value) {
   }
 
 
+  /* 次の質問 */
+
   showQuestion();
 
 }
 
 
 /* ==================================================
-   現在時刻
+   時計
 ================================================== */
 
 function updateClock() {
@@ -1074,7 +1240,6 @@ setInterval(
   updateClock,
   1000
 );
-
 
 </script>
 
