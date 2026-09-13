@@ -1,9 +1,10 @@
-
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>お母さん 朝のチェック</title>
 
 <style>
@@ -12,24 +13,40 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
   font-family:
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     "Meiryo",
     sans-serif;
-  background: linear-gradient(180deg, #fff5f8, #eefaff);
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff5f8 0%,
+      #fffaf7 45%,
+      #eefaff 100%
+    );
+
   color: #5b3d35;
 }
 
-/* =========================
-   メイン
-========================= */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
 
 .app {
   min-height: 100vh;
   padding: 16px;
+
   display: flex;
   justify-content: center;
 }
@@ -39,14 +56,16 @@ body {
   max-width: 480px;
 }
 
-/* =========================
-   ヘッダー
-========================= */
+
+/* ==================================================
+   共通ヘッダー
+================================================== */
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   margin-bottom: 12px;
 }
 
@@ -60,61 +79,117 @@ body {
   font-weight: 900;
 }
 
-/* =========================
-   朝のウェルカム
-========================= */
+
+/* ==================================================
+   ホーム画面
+================================================== */
 
 .welcome {
-  background: linear-gradient(180deg, #fff9fb, #fff);
+  background:
+    linear-gradient(
+      180deg,
+      #fff9fb 0%,
+      #ffffff 100%
+    );
+
   border-radius: 30px;
-  padding: 22px 18px 18px;
+
+  padding: 20px 16px 18px;
+
   text-align: center;
-  box-shadow: 0 8px 25px rgba(100, 80, 80, .12);
+
+  box-shadow:
+    0 8px 25px rgba(100, 80, 80, .12);
+
   border: 2px solid #ffd8e3;
+
   overflow: hidden;
 }
 
+
+/* ==================================================
+   兄貴の写真
+   四角・角丸バナー
+================================================== */
+
 .photo {
-  width: 145px;
-  height: 145px;
-  margin: 0 auto 8px;
-  border-radius: 50%;
+  display: block;
+
+  width: 100%;
+  max-width: 390px;
+
+  height: 190px;
+
+  margin: 0 auto 14px;
+
   object-fit: cover;
-  border: 6px solid #fff;
-  box-shadow: 0 5px 18px rgba(255, 120, 150, .28);
+
+  border-radius: 24px;
+
+  border: 5px solid #ffffff;
+
+  box-shadow:
+    0 6px 18px rgba(255, 120, 150, .25);
+
   background: #e9f8ff;
 }
 
-.speech {
-  display: inline-block;
-  background: #fff;
-  border: 2px solid #ffd1df;
-  border-radius: 22px;
-  padding: 9px 18px;
-  font-size: 18px;
-  font-weight: 800;
-  margin-bottom: 7px;
-}
+
+/* ==================================================
+   おはよう！〇〇〇だよ！
+================================================== */
 
 .greeting {
-  font-size: 38px;
-  line-height: 1.2;
+  width: 100%;
+
+  margin: 0 auto 15px;
+
+  padding: 15px 10px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f5,
+      #fff9fb
+    );
+
+  border: 2px solid #ffcbd9;
+
+  color: #f05278;
+
+  font-size: clamp(30px, 8vw, 40px);
+
+  line-height: 1.25;
+
   font-weight: 1000;
-  color: #f05a7e;
-  text-shadow: 0 2px 0 #fff;
-  margin: 5px 0 14px;
+
+  text-align: center;
+
+  text-shadow:
+    0 2px 0 #ffffff;
+
+  box-shadow:
+    0 5px 14px rgba(255, 100, 140, .10);
 }
 
-/* =========================
+
+/* ==================================================
    日付・天気
-========================= */
+================================================== */
 
 .info-card {
-  background: #fff;
+  background: #ffffff;
+
   border-radius: 20px;
+
   padding: 13px;
+
   margin-top: 10px;
-  box-shadow: 0 4px 12px rgba(80, 80, 80, .08);
+
+  box-shadow:
+    0 4px 12px rgba(80, 80, 80, .08);
 }
 
 .date {
@@ -124,9 +199,12 @@ body {
 
 .weather {
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 12px;
+
   font-size: 22px;
   font-weight: 800;
 }
@@ -135,340 +213,740 @@ body {
   font-size: 48px;
 }
 
+.weather strong {
+  font-size: 30px;
+  color: #3999e8;
+}
+
 .encourage {
   font-size: 18px;
   font-weight: 700;
-  margin-top: 8px;
+
+  margin-top: 10px;
 }
 
-/* =========================
-   START
-========================= */
+
+/* ==================================================
+   はじめる
+   ホーム画面の最下部
+================================================== */
 
 .start-button {
   width: 100%;
+
   margin-top: 16px;
+
   border: 0;
+
   border-radius: 50px;
+
   padding: 18px;
-  background: linear-gradient(135deg, #ff6f91, #ff4f78);
-  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff6f91,
+      #ff4f78
+    );
+
+  color: #ffffff;
+
   font-size: 27px;
+
   font-weight: 1000;
-  box-shadow: 0 7px 16px rgba(255, 80, 120, .25);
+
+  box-shadow:
+    0 7px 16px rgba(255, 80, 120, .25);
 }
 
-/* =========================
-   質問カード
-========================= */
-
-.question-screen {
-  margin-top: 18px;
-}
-
-.question-card {
-  background: rgba(255,255,255,.96);
-  border-radius: 28px;
-  padding: 20px 15px 18px;
-  box-shadow: 0 8px 24px rgba(90,80,80,.12);
-  border: 2px solid #ffd8e3;
-  text-align: center;
-}
-
-.question-icon {
-  font-size: 72px;
-  margin-bottom: 4px;
-}
-
-.question {
-  font-size: 34px;
-  line-height: 1.35;
-  font-weight: 1000;
-  margin: 8px 0 20px;
-}
-
-/* =========================
-   はい・いいえ
-========================= */
-
-.answer {
-  width: 100%;
-  min-height: 82px;
-  border: 0;
-  border-radius: 50px;
-  margin-top: 12px;
-  color: white;
-  font-size: 32px;
-  font-weight: 1000;
-  box-shadow: 0 5px 12px rgba(0,0,0,.12);
-}
-
-.yes {
-  background: linear-gradient(135deg, #ff6688, #f94670);
-}
-
-.no {
-  background: linear-gradient(135deg, #55aef5, #338ee2);
-}
-
-.answer:active,
 .start-button:active {
   transform: scale(.98);
 }
 
-/* =========================
-   安心メッセージ
-========================= */
+
+/* ==================================================
+   質問画面
+================================================== */
+
+.question-screen {
+  display: none;
+
+  min-height: calc(100vh - 32px);
+
+  align-items: center;
+  justify-content: center;
+}
+
+.question-card {
+  width: 100%;
+
+  background:
+    rgba(255, 255, 255, .98);
+
+  border-radius: 28px;
+
+  padding: 24px 15px 22px;
+
+  box-shadow:
+    0 8px 24px rgba(90, 80, 80, .12);
+
+  border: 2px solid #ffd8e3;
+
+  text-align: center;
+}
+
+.question-icon {
+  font-size: 78px;
+
+  margin-bottom: 6px;
+}
+
+.question {
+  font-size: 36px;
+
+  line-height: 1.35;
+
+  font-weight: 1000;
+
+  margin: 8px 0 24px;
+}
+
+
+/* ==================================================
+   はい・いいえ
+================================================== */
+
+.answer {
+  width: 100%;
+
+  min-height: 88px;
+
+  border: 0;
+
+  border-radius: 50px;
+
+  margin-top: 13px;
+
+  color: #ffffff;
+
+  font-size: 32px;
+
+  font-weight: 1000;
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, .12);
+
+  transition:
+    transform .1s ease;
+}
+
+.yes {
+  background:
+    linear-gradient(
+      135deg,
+      #ff6688,
+      #f94670
+    );
+}
+
+.no {
+  background:
+    linear-gradient(
+      135deg,
+      #55aef5,
+      #338ee2
+    );
+}
+
+.answer:active {
+  transform: scale(.98);
+}
+
+
+/* ==================================================
+   完了画面
+================================================== */
 
 .thanks {
-  margin-top: 18px;
-  background: linear-gradient(180deg, #fff9fc, #fff);
+  display: none;
+
+  min-height: calc(100vh - 32px);
+
+  align-items: center;
+  justify-content: center;
+}
+
+.thanks-card {
+  width: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff9fc,
+      #ffffff
+    );
+
   border: 2px solid #ffd6e2;
+
   border-radius: 28px;
+
   text-align: center;
-  padding: 25px 18px;
+
+  padding: 30px 18px;
+
+  box-shadow:
+    0 8px 24px rgba(90, 80, 80, .12);
 }
 
 .thanks-title {
-  font-size: 34px;
+  font-size: 36px;
+
   font-weight: 1000;
+
   color: #ed6684;
 }
 
 .thanks-text {
-  font-size: 21px;
+  font-size: 22px;
+
   line-height: 1.6;
+
   font-weight: 800;
+
+  margin-top: 12px;
 }
 
-/* =========================
-   デモ用ナビ
-========================= */
 
-.demo-note {
-  text-align: center;
-  font-size: 13px;
-  color: #9a8580;
-  margin: 18px 0;
+/* ==================================================
+   小さい画面への調整
+================================================== */
+
+@media (max-width: 360px) {
+
+  .app {
+    padding: 10px;
+  }
+
+  .welcome {
+    padding: 15px 12px;
+  }
+
+  .photo {
+    height: 165px;
+  }
+
+  .greeting {
+    font-size: 29px;
+    padding: 13px 7px;
+  }
+
+  .question {
+    font-size: 31px;
+  }
+
+  .answer {
+    min-height: 78px;
+    font-size: 29px;
+  }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
+
 <div class="phone">
 
-  <!-- =====================
-       朝のトップ画面
-  ====================== -->
+
+<!-- ==================================================
+     ホーム画面
+================================================== -->
+
+<div id="homeScreen">
 
   <div class="header">
-    <div class="header-title">🏠 朝のチェック</div>
-    <div class="header-time" id="headerTime">8:00</div>
+
+    <div class="header-title">
+      🏠 朝のチェック
+    </div>
+
+    <div
+      class="header-time"
+      id="headerTime">
+      8:00
+    </div>
+
   </div>
+
 
   <section class="welcome">
 
-    <!-- 後で兄貴の写真に差し替え -->
+
+    <!-- ==================================================
+         兄貴の写真
+         後でここを自分の写真に差し替え
+    ================================================== -->
+
     <img
       class="photo"
-      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"
+      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800"
       alt="お兄さん">
 
-    <div class="speech">
-      おはよう、お母さん 😊
-    </div>
+
+    <!-- ==================================================
+         おはようメッセージ
+         〇〇〇 ← ここを後で3文字に差し替え
+    ================================================== -->
 
     <div class="greeting">
-      おはようございます！
+      おはよう！〇〇〇だよ！
     </div>
+
+
+    <!-- ==================================================
+         日付
+    ================================================== -->
 
     <div class="info-card">
-      <div class="date" id="dateText">
+
+      <div
+        class="date"
+        id="dateText">
+
         9月14日（日）8:00
+
       </div>
+
     </div>
 
+
+    <!-- ==================================================
+         天気
+    ================================================== -->
+
     <div class="info-card weather">
-      <div class="weather-icon">☀️</div>
-      <div>
-        今日の天気は<br>
-        <strong style="font-size:30px;color:#3999e8;">晴れ</strong> です
+
+      <div class="weather-icon">
+        ☀️
       </div>
+
+      <div>
+
+        今日の天気は<br>
+
+        <strong>
+          晴れ
+        </strong>
+
+        です
+
+      </div>
+
     </div>
+
 
     <div class="encourage">
       今日も元気に過ごしましょうね ❤️
     </div>
 
-    <button class="start-button" onclick="startCheck()">
+
+    <!-- ==================================================
+         ホーム画面の最下部
+         ここで終了
+    ================================================== -->
+
+    <button
+      class="start-button"
+      onclick="startCheck()">
+
       はじめる　›
+
     </button>
+
 
   </section>
 
+</div>
 
-  <!-- =====================
-       質問エリア
-  ====================== -->
 
-  <div class="question-screen" id="questionScreen">
 
-    <div class="question-card">
+<!-- ==================================================
+     質問画面
+================================================== -->
 
-      <div class="question-icon" id="questionIcon">
-        🍚
-      </div>
+<div
+  class="question-screen"
+  id="questionScreen">
 
-      <div class="question" id="questionText">
-        朝ごはん<br>食べた？
-      </div>
 
-      <button class="answer yes" onclick="answer('はい')">
-        😊　はい
-      </button>
+  <div class="question-card">
 
-      <button class="answer no" onclick="answer('いいえ')">
-        🙂　いいえ
-      </button>
+
+    <div
+      class="question-icon"
+      id="questionIcon">
+
+      🍚
 
     </div>
 
+
+    <div
+      class="question"
+      id="questionText">
+
+      朝ごはん<br>
+      食べた？
+
+    </div>
+
+
+    <button
+      class="answer yes"
+      onclick="answer('はい')">
+
+      😊　はい
+
+    </button>
+
+
+    <button
+      class="answer no"
+      onclick="answer('いいえ')">
+
+      🙂　いいえ
+
+    </button>
+
+
   </div>
 
+</div>
 
-  <!-- =====================
-       完了画面
-  ====================== -->
 
-  <div class="thanks" id="thanksScreen" style="display:none;">
+
+<!-- ==================================================
+     完了画面
+================================================== -->
+
+<div
+  class="thanks"
+  id="thanksScreen">
+
+
+  <div class="thanks-card">
+
 
     <div class="thanks-title">
+
       ありがとう！ 💕
+
     </div>
+
 
     <div class="thanks-text">
+
       回答してくれてありがとう😊<br>
+
       今日も無理せず<br>
+
       ゆっくり過ごしてくださいね。
+
     </div>
 
-    <div style="font-size:65px;margin-top:12px;">
+
+    <div
+      style="
+        font-size:65px;
+        margin-top:12px;
+      ">
+
       🌷😊🌷
+
     </div>
 
-  </div>
 
-  <div class="demo-note">
-    UI試作版 / IRON MOM CARE
   </div>
 
 </div>
+
+
 </div>
+</div>
+
 
 
 <script>
 
+
+/* ==================================================
+   質問一覧
+   順番は指定どおり
+================================================== */
+
 const questions = [
+
   {
     icon: "🍚",
     text: "朝ごはん<br>食べた？"
   },
+
   {
     icon: "💊",
     text: "朝の薬は<br>飲んだ？"
   },
+
   {
     icon: "❤️",
     text: "身体どこか<br>痛いところない？"
   },
+
   {
     icon: "💧",
     text: "水分補給<br>してる？"
+  },
+
+  {
+    icon: "🏃‍♀️",
+    text: "軽く運動は<br>した？"
+  },
+
+  {
+    icon: "🆘",
+    text: "何か困ったこと<br>ある？"
   }
+
 ];
 
+
 let currentQuestion = 0;
+
 let answers = [];
 
 
+
+/* ==================================================
+   「はじめる」
+================================================== */
+
 function startCheck() {
-  document.getElementById("questionScreen")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
+
+  currentQuestion = 0;
+
+  answers = [];
+
+
+  /*
+    ホーム画面を隠す
+  */
+
+  document
+    .getElementById("homeScreen")
+    .style.display = "none";
+
+
+  /*
+    質問画面を表示
+  */
+
+  document
+    .getElementById("questionScreen")
+    .style.display = "flex";
+
+
+  /*
+    最初の質問
+  */
+
+  showQuestion();
+
 }
 
+
+
+/* ==================================================
+   質問を表示
+================================================== */
+
+function showQuestion() {
+
+  const question =
+    questions[currentQuestion];
+
+
+  document
+    .getElementById("questionIcon")
+    .innerHTML =
+    question.icon;
+
+
+  document
+    .getElementById("questionText")
+    .innerHTML =
+    question.text;
+
+}
+
+
+
+/* ==================================================
+   はい／いいえ
+   押したら即座に次の質問
+================================================== */
 
 function answer(value) {
 
+
+  /*
+    回答を保存
+  */
+
   answers.push({
-    question: questions[currentQuestion].text
-      .replace("<br>", " "),
+
+    question:
+      questions[currentQuestion]
+        .text
+        .replace(/<br>/g, " "),
+
     answer: value
+
   });
+
+
+  /*
+    次の質問へ
+  */
 
   currentQuestion++;
 
-  if (currentQuestion >= questions.length) {
 
-    document.getElementById("questionScreen")
+  /*
+    全質問終了
+  */
+
+  if (
+    currentQuestion >=
+    questions.length
+  ) {
+
+
+    document
+      .getElementById("questionScreen")
       .style.display = "none";
 
-    document.getElementById("thanksScreen")
-      .style.display = "block";
 
-    document.getElementById("thanksScreen")
-      .scrollIntoView({
-        behavior: "smooth"
-      });
+    document
+      .getElementById("thanksScreen")
+      .style.display = "flex";
 
-    console.log("回答結果:", answers);
+
+    /*
+      現段階では確認用に
+      コンソールへ回答を保存
+    */
+
+    console.log(
+      "回答結果:",
+      answers
+    );
+
 
     return;
+
   }
 
-  document.getElementById("questionIcon").innerHTML =
-    questions[currentQuestion].icon;
 
-  document.getElementById("questionText").innerHTML =
-    questions[currentQuestion].text;
+  /*
+    次の質問を表示
+  */
+
+  showQuestion();
+
 }
 
 
-/* =====================
+
+/* ==================================================
    現在時刻
-===================== */
+================================================== */
 
 function updateClock() {
 
   const now = new Date();
 
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
-  const hour = String(now.getHours()).padStart(2,"0");
-  const minute = String(now.getMinutes()).padStart(2,"0");
+
+  const month =
+    now.getMonth() + 1;
+
+  const day =
+    now.getDate();
+
+
+  const hour =
+    String(
+      now.getHours()
+    ).padStart(2, "0");
+
+
+  const minute =
+    String(
+      now.getMinutes()
+    ).padStart(2, "0");
+
 
   const weekdays = [
-    "日","月","火","水","木","金","土"
+
+    "日",
+    "月",
+    "火",
+    "水",
+    "木",
+    "金",
+    "土"
+
   ];
 
-  const weekday = weekdays[now.getDay()];
 
-  document.getElementById("headerTime").textContent =
+  const weekday =
+    weekdays[now.getDay()];
+
+
+  /*
+    ヘッダー時刻
+  */
+
+  document
+    .getElementById("headerTime")
+    .textContent =
     `${hour}:${minute}`;
 
-  document.getElementById("dateText").textContent =
+
+  /*
+    日付
+  */
+
+  document
+    .getElementById("dateText")
+    .textContent =
     `${month}月${day}日（${weekday}）${hour}:${minute}`;
+
 }
 
+
 updateClock();
-setInterval(updateClock, 1000);
+
+
+setInterval(
+  updateClock,
+  1000
+);
+
 
 </script>
 
 </body>
 </html>
 ```
-
