@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,16 +5,19 @@
 
 <meta
   name="viewport"
-  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  content="width=device-width,
+  initial-scale=1.0,
+  maximum-scale=1.0,
+  user-scalable=no"
 >
 
-<title>お母さん 朝のチェック</title>
+<title>朝のチェック</title>
 
 <style>
 
-/* ==================================================
-   基本設定
-================================================== */
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
   box-sizing: border-box;
@@ -33,48 +35,41 @@ body {
 
 body {
   font-family:
-    "Hiragino Kaku Gothic ProN",
+    "Hiragino Maru Gothic ProN",
     "Yu Gothic",
     "Meiryo",
     sans-serif;
 
-  color: #603d32;
-
   background:
     linear-gradient(
       180deg,
-      #fff7f9 0%,
-      #fffdf9 50%,
-      #f0fbff 100%
+      #fffafb 0%,
+      #fffdfb 55%,
+      #fffaf7 100%
     );
-}
 
-button {
-  font-family: inherit;
-  border: none;
-  outline: none;
+  color: #632b18;
 }
 
 
-/* ==================================================
-   アプリ全体
-   画面内固定・スクロール禁止
-================================================== */
+/* =====================================================
+   APP
+===================================================== */
 
 .app {
   width: 100%;
   height: 100dvh;
 
-  padding:
-    max(6px, env(safe-area-inset-top))
-    max(8px, env(safe-area-inset-right))
-    max(6px, env(safe-area-inset-bottom))
-    max(8px, env(safe-area-inset-left));
+  display: flex;
+  justify-content: center;
 
   overflow: hidden;
 
-  display: flex;
-  justify-content: center;
+  padding:
+    env(safe-area-inset-top)
+    8px
+    env(safe-area-inset-bottom)
+    8px;
 }
 
 .phone {
@@ -86,9 +81,9 @@ button {
 }
 
 
-/* ==================================================
-   ホーム画面
-================================================== */
+/* =====================================================
+   HOME
+===================================================== */
 
 #homeScreen {
   width: 100%;
@@ -101,11 +96,11 @@ button {
 }
 
 
-/* ==================================================
-   ヘッダー
-================================================== */
+/* =====================================================
+   TOP BAR
+===================================================== */
 
-.header {
+.topbar {
   height: 7%;
 
   flex-shrink: 0;
@@ -114,262 +109,334 @@ button {
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 5px;
+  padding: 0 12px 0 8px;
 }
 
-.header-title {
-  font-size: clamp(20px, 5.8vw, 28px);
+.top-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-weight: 1000;
+}
+
+.home-icon {
+  font-size: clamp(40px, 11vw, 55px);
+
+  line-height: 1;
+}
+
+.title {
+  font-size: clamp(25px, 7vw, 36px);
+
   font-weight: 1000;
 
-  color: #603d32;
+  letter-spacing: -1px;
+
+  white-space: nowrap;
 }
 
-.header-time {
-  font-size: clamp(20px, 5.8vw, 27px);
+.title-heart {
+  color: #ff5c94;
+
+  font-size: .8em;
+
+  vertical-align: top;
+}
+
+.clock {
+  font-size: clamp(29px, 8vw, 39px);
+
   font-weight: 1000;
 
-  color: #603d32;
+  white-space: nowrap;
 }
 
 
-/* ==================================================
-   ホームメイン
-================================================== */
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
 
-.welcome {
-  width: 100%;
+.home-content {
   height: 93%;
-
-  flex-shrink: 0;
 
   display: flex;
   flex-direction: column;
 
   justify-content: space-between;
 
-  padding:
-    1.2%
-    2.5%
-    1.5%;
-
-  border-radius: 28px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fffafc 0%,
-      #ffffff 100%
-    );
-
-  border: 2px solid #ffd8e5;
-
-  box-shadow:
-    0 7px 25px rgba(110, 80, 80, .10);
-
   overflow: hidden;
+
+  padding:
+    0
+    14px
+    5px;
 }
 
 
-/* ==================================================
-   兄貴の写真
-   横長・角丸バナー
-================================================== */
+/* =====================================================
+   PHOTO
+===================================================== */
 
-.photo {
-  display: block;
-
+.photo-wrap {
   width: 100%;
-
-  height: 24%;
+  height: 22.5%;
 
   flex-shrink: 0;
-
-  object-fit: cover;
-
-  border-radius: 24px;
-
-  border: 4px solid #ffffff;
-
-  box-shadow:
-    0 5px 15px rgba(255, 115, 150, .22);
-
-  background: #e9f8ff;
-}
-
-
-/* ==================================================
-   おはようバナー
-   写真との間に少し隙間
-================================================== */
-
-.greeting {
-  width: 100%;
-
-  height: 22%;
-
-  flex-shrink: 0;
-
-  margin-top: 1.5%;
-  margin-bottom: 1%;
 
   padding: 4px;
 
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  border-radius: 25px;
+  border-radius: 34px;
 
   background:
     linear-gradient(
       135deg,
-      #fff1f6 0%,
-      #fffafd 100%
+      #ffcee0,
+      #fff,
+      #ffc9dc
     );
 
-  border: 3px solid #ffc6d8;
+  box-shadow:
+    0 3px 8px rgba(255, 120, 160, .18);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 29px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ccecf5,
+      #edf7d4
+    );
+}
+
+
+/* =====================================================
+   GREETING BANNER
+===================================================== */
+
+.greeting {
+  width: 100%;
+  height: 21%;
+
+  flex-shrink: 0;
+
+  margin-top: 1.1%;
+
+  border-radius: 34px;
+
+  border: 4px solid #ffb3ce;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffafb 0%,
+      #fff2f7 100%
+    );
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  overflow: hidden;
 
   box-shadow:
-    0 6px 15px rgba(255, 100, 140, .10);
+    inset 0 0 0 2px #ffe2ec,
+    0 5px 10px rgba(255, 113, 158, .13);
+
+  position: relative;
 }
+
+
+/* decorative flowers */
+
+.greeting::before {
+  content: "🌸";
+
+  position: absolute;
+
+  left: 18px;
+  top: 12px;
+
+  font-size: 42px;
+}
+
+.greeting::after {
+  content: "🌸";
+
+  position: absolute;
+
+  right: 18px;
+  top: 12px;
+
+  font-size: 42px;
+}
+
 
 .greeting-line {
   display: block;
 
-  width: 100%;
-
-  line-height: 1.05;
-
-  color: #f33e70;
+  color: #f31f5d;
 
   font-weight: 1000;
 
-  text-align: center;
+  line-height: .95;
 
   text-shadow:
-    0 2px 0 #ffffff;
+    0 3px 0 #ffffff,
+    0 5px 8px rgba(210, 50, 90, .12);
+
+  z-index: 2;
 }
 
 .greeting-line:first-child {
-  font-size: clamp(34px, 9.5vw, 48px);
+  font-size: clamp(48px, 14vw, 76px);
 }
 
 .greeting-line:last-child {
-  font-size: clamp(33px, 9vw, 46px);
+  font-size: clamp(46px, 13vw, 70px);
 
-  margin-top: 2px;
+  margin-top: 5px;
 }
 
 
-/* ==================================================
-   日付
-================================================== */
+/* =====================================================
+   DATE
+===================================================== */
 
-.date-card {
+.date-box {
   width: 100%;
-
-  height: 11%;
+  height: 11.5%;
 
   flex-shrink: 0;
 
+  margin-top: 1%;
+
+  border-radius: 29px;
+
+  border: 4px solid #ffe1b0;
+
+  background:
+    #fffdfa;
+
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  padding: 4px 8px;
-
-  background: #fffdf7;
-
-  border: 3px solid #ffe5b7;
-
-  border-radius: 20px;
+  padding: 0 14px;
 
   box-shadow:
-    0 4px 10px rgba(120, 90, 60, .07);
+    0 4px 10px rgba(180, 130, 70, .07);
 }
 
-.date {
-  font-size: clamp(22px, 6.5vw, 31px);
+.calendar-icon {
+  width: 18%;
 
-  line-height: 1;
+  text-align: center;
+
+  font-size: clamp(42px, 12vw, 61px);
+}
+
+.date-text {
+  flex: 1;
+
+  text-align: center;
+
+  font-size: clamp(29px, 8.2vw, 43px);
 
   font-weight: 1000;
 
-  color: #5c392d;
+  letter-spacing: -1px;
 
   white-space: nowrap;
 }
 
 
-/* ==================================================
-   天気
-================================================== */
+/* =====================================================
+   WEATHER
+===================================================== */
 
-.weather {
+.weather-box {
   width: 100%;
-
-  height: 16%;
+  height: 15.5%;
 
   flex-shrink: 0;
 
+  margin-top: 1%;
+
+  border-radius: 30px;
+
+  border: 4px solid #ffe2b4;
+
+  background:
+    #fffefa;
+
   display: flex;
-
   align-items: center;
-  justify-content: center;
 
-  gap: 10px;
+  padding: 4px 10px;
 
-  padding: 4px 8px;
-
-  background: #fffefa;
-
-  border: 3px solid #ffe6bd;
-
-  border-radius: 20px;
-
-  box-shadow:
-    0 4px 10px rgba(120, 90, 60, .07);
+  overflow: hidden;
 }
 
-.weather-icon {
-  font-size: clamp(42px, 12vw, 58px);
+.sun {
+  width: 28%;
+
+  text-align: center;
+
+  font-size: clamp(63px, 18vw, 90px);
 
   line-height: 1;
 }
 
-.weather-text {
-  text-align: center;
+.weather-message {
+  flex: 1;
 
-  font-size: clamp(18px, 5vw, 25px);
+  text-align: center;
 
   font-weight: 1000;
 
-  line-height: 1.05;
-}
-
-.weather-text strong {
-  display: inline-block;
-
-  font-size: clamp(31px, 9vw, 42px);
-
-  color: #168ce8;
-
   line-height: 1;
 }
 
+.weather-small {
+  font-size: clamp(20px, 5.5vw, 29px);
+}
 
-/* ==================================================
-   応援メッセージ
-================================================== */
+.weather-big {
+  color: #168be8;
+
+  font-size: clamp(48px, 13vw, 70px);
+
+  font-weight: 1000;
+
+  text-shadow:
+    0 3px 0 #ffffff;
+}
+
+.weather-last {
+  font-size: clamp(23px, 6vw, 32px);
+}
+
+
+/* =====================================================
+   ENCOURAGEMENT
+===================================================== */
 
 .encourage {
   width: 100%;
-
-  height: 10%;
+  height: 12.5%;
 
   flex-shrink: 0;
 
@@ -379,62 +446,93 @@ button {
 
   text-align: center;
 
-  font-size: clamp(17px, 5vw, 24px);
+  position: relative;
 
-  line-height: 1.1;
+  font-size: clamp(23px, 6.5vw, 34px);
+
+  line-height: 1.15;
 
   font-weight: 1000;
+}
 
-  color: #603d32;
+.encourage::before {
+  content: "🌸";
+
+  position: absolute;
+
+  left: 0;
+
+  font-size: 42px;
+}
+
+.encourage::after {
+  content: "🌸";
+
+  position: absolute;
+
+  right: 0;
+
+  font-size: 42px;
 }
 
 
-/* ==================================================
-   はじめるボタン
-================================================== */
+/* =====================================================
+   START BUTTON
+===================================================== */
 
 .start-button {
   width: 100%;
-
-  height: 13%;
+  height: 13.5%;
 
   flex-shrink: 0;
 
   border-radius: 50px;
 
-  color: #ffffff;
+  border: 4px solid #ff5c91;
 
   background:
     linear-gradient(
-      135deg,
-      #ff6d91 0%,
-      #ff3f70 100%
+      180deg,
+      #ff79a5 0%,
+      #ff2765 100%
     );
 
-  font-size: clamp(27px, 8vw, 38px);
+  color: white;
+
+  font-size: clamp(36px, 10vw, 52px);
 
   font-weight: 1000;
 
   box-shadow:
-    0 7px 16px rgba(255, 70, 110, .27);
+    inset 0 4px 0 rgba(255,255,255,.35),
+    0 8px 16px rgba(255, 48, 100, .25);
 
   text-shadow:
-    0 2px 2px rgba(180, 30, 70, .18);
+    0 3px 3px rgba(180, 20, 65, .25);
 
-  transition:
-    transform .1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  padding: 0;
 }
 
 .start-button:active {
-  transform: scale(.97);
+  transform: scale(.98);
+}
+
+.start-play {
+  font-size: .8em;
 }
 
 
-/* ==================================================
-   質問画面
-================================================== */
+/* =====================================================
+   QUESTION SCREEN
+===================================================== */
 
-.question-screen {
+#questionScreen {
   width: 100%;
   height: 100dvh;
 
@@ -450,17 +548,9 @@ button {
   width: 100%;
   height: 100%;
 
-  padding:
-    5%
-    4%;
+  border-radius: 30px;
 
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
+  border: 3px solid #ffc9dc;
 
   background:
     linear-gradient(
@@ -469,90 +559,65 @@ button {
       #ffffff
     );
 
-  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
 
-  border: 2px solid #ffd6e2;
+  align-items: center;
+  justify-content: center;
 
-  box-shadow:
-    0 8px 24px rgba(90, 80, 80, .12);
+  padding: 5%;
 
   overflow: hidden;
 }
 
-
-/* ==================================================
-   質問アイコン
-================================================== */
-
 .question-icon {
-  font-size: clamp(60px, 18vw, 90px);
+  font-size: clamp(65px, 19vw, 95px);
 
   line-height: 1;
-
-  margin-bottom: 2%;
 }
 
-
-/* ==================================================
-   質問本文
-================================================== */
-
-.question {
+.question-text {
   width: 100%;
 
-  margin:
-    1%
-    0
-    4%;
+  margin: 4% 0;
 
-  font-size: clamp(31px, 9vw, 42px);
+  text-align: center;
 
-  line-height: 1.25;
+  font-size: clamp(34px, 9vw, 46px);
 
   font-weight: 1000;
 
-  color: #603d32;
+  line-height: 1.25;
 }
-
-
-/* ==================================================
-   回答ボタン
-================================================== */
 
 .answer {
   width: 100%;
-
   height: 17%;
-
-  flex-shrink: 0;
 
   margin-top: 3%;
 
   border-radius: 50px;
 
-  color: #ffffff;
+  color: white;
 
-  font-size: clamp(29px, 8.5vw, 38px);
+  font-size: clamp(30px, 8vw, 40px);
 
   font-weight: 1000;
 
   box-shadow:
-    0 6px 13px rgba(0, 0, 0, .12);
-
-  transition:
-    transform .1s ease;
+    0 6px 12px rgba(0,0,0,.12);
 }
 
 .answer:active {
-  transform: scale(.97);
+  transform: scale(.98);
 }
 
 .yes {
   background:
     linear-gradient(
       135deg,
-      #ff6688,
-      #f84270
+      #ff7193,
+      #f83d6e
     );
 }
 
@@ -560,17 +625,17 @@ button {
   background:
     linear-gradient(
       135deg,
-      #55b0f5,
-      #328ee0
+      #5bb7f7,
+      #328fe0
     );
 }
 
 
-/* ==================================================
-   完了画面
-================================================== */
+/* =====================================================
+   COMPLETE
+===================================================== */
 
-.thanks {
+#thanksScreen {
   width: 100%;
   height: 100dvh;
 
@@ -585,37 +650,29 @@ button {
 .thanks-card {
   width: 100%;
 
-  padding: 30px 15px;
+  padding: 35px 15px;
+
+  border-radius: 30px;
+
+  border: 3px solid #ffd0df;
+
+  background: #fffafd;
 
   text-align: center;
-
-  border-radius: 28px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fff8fb,
-      #ffffff
-    );
-
-  border: 2px solid #ffd6e2;
-
-  box-shadow:
-    0 8px 24px rgba(90, 80, 80, .12);
 }
 
 .thanks-title {
-  font-size: clamp(35px, 10vw, 46px);
+  font-size: clamp(38px, 11vw, 52px);
 
   font-weight: 1000;
 
-  color: #ef5278;
+  color: #ef4f78;
 }
 
 .thanks-text {
-  margin-top: 14px;
+  margin-top: 15px;
 
-  font-size: clamp(19px, 5.5vw, 25px);
+  font-size: clamp(20px, 6vw, 28px);
 
   line-height: 1.5;
 
@@ -623,25 +680,22 @@ button {
 }
 
 
-/* ==================================================
-   小さい高さのスマホ
-================================================== */
+/* =====================================================
+   SMALL HEIGHT DEVICES
+===================================================== */
 
-@media (max-height: 700px) {
+@media (max-height: 720px) {
 
-  .header {
-    height: 6%;
+  .topbar {
+    height: 6.5%;
   }
 
-  .welcome {
-    height: 94%;
-
-    padding-top: 1%;
-    padding-bottom: 1%;
+  .home-content {
+    height: 93.5%;
   }
 
-  .photo {
-    height: 22%;
+  .photo-wrap {
+    height: 21%;
   }
 
   .greeting {
@@ -649,57 +703,41 @@ button {
   }
 
   .greeting-line:first-child {
-    font-size: clamp(29px, 8vw, 39px);
+    font-size: clamp(42px, 12vw, 62px);
   }
 
   .greeting-line:last-child {
-    font-size: clamp(28px, 7.8vw, 38px);
+    font-size: clamp(40px, 11.5vw, 59px);
   }
 
-  .date-card {
+  .date-box {
     height: 11%;
   }
 
-  .date {
-    font-size: clamp(19px, 5.5vw, 25px);
-  }
-
-  .weather {
-    height: 16%;
-  }
-
-  .weather-icon {
-    font-size: 38px;
-  }
-
-  .weather-text {
-    font-size: 16px;
-  }
-
-  .weather-text strong {
-    font-size: 29px;
+  .weather-box {
+    height: 15%;
   }
 
   .encourage {
-    height: 8%;
-    font-size: 15px;
+    height: 11.5%;
+    font-size: clamp(20px, 5.5vw, 27px);
   }
 
   .start-button {
-    height: 12%;
-    font-size: 26px;
+    height: 13%;
+    font-size: clamp(32px, 9vw, 42px);
   }
 }
 
 
-/* ==================================================
-   とても小さい画面
-================================================== */
+/* =====================================================
+   VERY SMALL HEIGHT
+===================================================== */
 
-@media (max-height: 600px) {
+@media (max-height: 620px) {
 
-  .photo {
-    height: 20%;
+  .photo-wrap {
+    height: 19%;
   }
 
   .greeting {
@@ -707,57 +745,49 @@ button {
   }
 
   .greeting-line:first-child {
-    font-size: 27px;
+    font-size: 36px;
   }
 
   .greeting-line:last-child {
-    font-size: 26px;
+    font-size: 35px;
   }
 
-  .date-card {
+  .date-box {
     height: 11%;
   }
 
-  .date {
-    font-size: 18px;
+  .date-text {
+    font-size: 25px;
   }
 
-  .weather {
-    height: 15%;
+  .weather-box {
+    height: 14%;
   }
 
-  .weather-icon {
-    font-size: 30px;
-  }
-
-  .weather-text {
-    font-size: 13px;
-  }
-
-  .weather-text strong {
-    font-size: 23px;
-  }
-
-  .encourage {
-    display: none;
-  }
-
-  .start-button {
-    height: 12%;
-    font-size: 23px;
-  }
-
-  .question-icon {
+  .sun {
     font-size: 55px;
   }
 
-  .question {
-    font-size: 28px;
+  .weather-small {
+    font-size: 17px;
   }
 
-  .answer {
-    height: 16%;
-    font-size: 27px;
+  .weather-big {
+    font-size: 43px;
+  }
+
+  .weather-last {
+    font-size: 19px;
+  }
+
+  .encourage {
+    height: 10%;
+    font-size: 19px;
+  }
+
+  .start-button {
+    height: 13%;
+    font-size: 31px;
   }
 }
 
@@ -767,29 +797,38 @@ button {
 
 <body>
 
-
 <div class="app">
 
 <div class="phone">
 
 
-<!-- ==================================================
-     ホーム画面
-================================================== -->
+<!-- =====================================================
+     HOME
+===================================================== -->
 
 <div id="homeScreen">
 
 
-  <!-- ヘッダー -->
+  <!-- TOP -->
 
-  <div class="header">
+  <div class="topbar">
 
-    <div class="header-title">
-      🏠 朝のチェック
+    <div class="top-left">
+
+      <div class="home-icon">
+        🏠
+      </div>
+
+      <div class="title">
+        朝のチェック
+        <span class="title-heart">♥</span>
+      </div>
+
     </div>
 
+
     <div
-      class="header-time"
+      class="clock"
       id="headerTime">
 
       8:00
@@ -799,25 +838,34 @@ button {
   </div>
 
 
-  <!-- メイン -->
+  <!-- CONTENT -->
 
-  <section class="welcome">
+  <div class="home-content">
 
 
-    <!-- ==================================================
-         兄貴の写真
-         後でここを自分の写真に差し替え
+    <!-- =================================================
+         PHOTO
     ================================================== -->
 
-    <img
-      class="photo"
-      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900"
-      alt="お兄さん">
+    <div class="photo-wrap">
+
+      <!--
+        ここを後で自分の写真に変更
+
+        例：
+        src="mom-check-photo.jpg"
+      -->
+
+      <img
+        class="photo"
+        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000"
+        alt="写真">
+
+    </div>
 
 
-    <!-- ==================================================
-         おはようバナー
-         〇〇〇 ← ここを後で3文字に変更
+    <!-- =================================================
+         GREETING
     ================================================== -->
 
     <div class="greeting">
@@ -833,90 +881,102 @@ button {
     </div>
 
 
-    <!-- ==================================================
-         日付
+    <!-- =================================================
+         DATE
     ================================================== -->
 
-    <div class="date-card">
+    <div class="date-box">
+
+      <div class="calendar-icon">
+        📅
+      </div>
 
       <div
-        class="date"
+        class="date-text"
         id="dateText">
 
-        9月14日（日）8:00
+        9月14日(日) 8:00
 
       </div>
 
     </div>
 
 
-    <!-- ==================================================
-         天気
-         現在は仮表示
+    <!-- =================================================
+         WEATHER
     ================================================== -->
 
-    <div class="weather">
+    <div class="weather-box">
 
-      <div class="weather-icon">
+      <div class="sun">
         ☀️
       </div>
 
-      <div class="weather-text">
+      <div class="weather-message">
 
-        今日の天気は<br>
+        <div class="weather-small">
+          今日の天気は
+        </div>
 
-        <strong>
+        <div class="weather-big">
           晴れ
-        </strong>
+        </div>
 
-        です
+        <div class="weather-last">
+          です
+        </div>
 
       </div>
 
     </div>
 
 
-    <!-- ==================================================
-         応援メッセージ
+    <!-- =================================================
+         MESSAGE
     ================================================== -->
 
     <div class="encourage">
 
-      今日も元気に過ごしましょうね ❤️
+      今日も元気に<br>
+      過ごしましょうね ❤️
 
     </div>
 
 
-    <!-- ==================================================
-         ホーム画面の最後
+    <!-- =================================================
+         START
     ================================================== -->
 
     <button
       class="start-button"
       onclick="startCheck()">
 
-      ▶ はじめる　›
+      <span class="start-play">
+        ▶
+      </span>
+
+      はじめる
+
+      <span>
+        ›
+      </span>
 
     </button>
 
 
-  </section>
+  </div>
 
 </div>
 
 
 
-<!-- ==================================================
-     質問画面
-================================================== -->
+<!-- =====================================================
+     QUESTIONS
+===================================================== -->
 
-<div
-  class="question-screen"
-  id="questionScreen">
-
+<div id="questionScreen">
 
   <div class="question-card">
-
 
     <div
       class="question-icon"
@@ -928,7 +988,7 @@ button {
 
 
     <div
-      class="question"
+      class="question-text"
       id="questionText">
 
       朝ごはん<br>
@@ -954,54 +1014,39 @@ button {
 
     </button>
 
-
   </div>
 
 </div>
 
 
 
-<!-- ==================================================
-     完了画面
-================================================== -->
+<!-- =====================================================
+     COMPLETE
+===================================================== -->
 
-<div
-  class="thanks"
-  id="thanksScreen">
-
+<div id="thanksScreen">
 
   <div class="thanks-card">
 
-
     <div class="thanks-title">
-
-      ありがとう！ 💕
-
+      ありがとう！💕
     </div>
-
 
     <div class="thanks-text">
-
       回答してくれてありがとう😊<br>
-
-      今日も無理せず<br>
-
-      ゆっくり過ごしてくださいね。
-
+      今日もゆっくり過ごしてね。
     </div>
-
 
     <div
       style="
         font-size:65px;
-        margin-top:12px;
+        margin-top:15px;
       ">
 
       🌷😊🌷
 
     </div>
 
-
   </div>
 
 </div>
@@ -1011,13 +1056,11 @@ button {
 </div>
 
 
-
 <script>
 
-
-/* ==================================================
-   質問一覧
-================================================== */
+/* =====================================================
+   QUESTIONS
+===================================================== */
 
 const questions = [
 
@@ -1059,9 +1102,9 @@ let currentQuestion = 0;
 let answers = [];
 
 
-/* ==================================================
-   はじめる
-================================================== */
+/* =====================================================
+   START
+===================================================== */
 
 function startCheck() {
 
@@ -1085,37 +1128,35 @@ function startCheck() {
 }
 
 
-/* ==================================================
-   質問表示
-================================================== */
+/* =====================================================
+   SHOW QUESTION
+===================================================== */
 
 function showQuestion() {
 
-  const question =
+  const q =
     questions[currentQuestion];
 
 
   document
     .getElementById("questionIcon")
     .textContent =
-    question.icon;
+    q.icon;
 
 
   document
     .getElementById("questionText")
     .innerHTML =
-    question.text;
+    q.text;
 
 }
 
 
-/* ==================================================
-   はい／いいえ
-   押したら即次の質問
-================================================== */
+/* =====================================================
+   ANSWER
+===================================================== */
 
 function answer(value) {
-
 
   answers.push({
 
@@ -1132,13 +1173,10 @@ function answer(value) {
   currentQuestion++;
 
 
-  /* 全質問終了 */
-
   if (
     currentQuestion >=
     questions.length
   ) {
-
 
     document
       .getElementById("questionScreen")
@@ -1150,37 +1188,28 @@ function answer(value) {
       .style.display = "flex";
 
 
-    /*
-      現段階では確認用。
-      後でFirebase等に接続して
-      兄貴のスマホへ送信する。
-    */
-
     console.log(
-      "回答結果:",
+      "回答結果",
       answers
     );
 
-
     return;
-
   }
 
-
-  /* 次の質問 */
 
   showQuestion();
 
 }
 
 
-/* ==================================================
-   時計
-================================================== */
+/* =====================================================
+   CLOCK
+===================================================== */
 
 function updateClock() {
 
-  const now = new Date();
+  const now =
+    new Date();
 
 
   const month =
@@ -1189,12 +1218,10 @@ function updateClock() {
   const day =
     now.getDate();
 
-
   const hour =
     String(
       now.getHours()
     ).padStart(2, "0");
-
 
   const minute =
     String(
@@ -1203,7 +1230,6 @@ function updateClock() {
 
 
   const weekdays = [
-
     "日",
     "月",
     "火",
@@ -1211,12 +1237,13 @@ function updateClock() {
     "木",
     "金",
     "土"
-
   ];
 
 
   const weekday =
-    weekdays[now.getDay()];
+    weekdays[
+      now.getDay()
+    ];
 
 
   document
@@ -1228,7 +1255,7 @@ function updateClock() {
   document
     .getElementById("dateText")
     .textContent =
-    `${month}月${day}日（${weekday}）${hour}:${minute}`;
+    `${month}月${day}日(${weekday}) ${hour}:${minute}`;
 
 }
 
@@ -1245,4 +1272,3 @@ setInterval(
 
 </body>
 </html>
-```
