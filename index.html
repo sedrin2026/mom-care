@@ -3,11 +3,20 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
 <title>お母さん 朝のチェック</title>
 
 <style>
+
+/* ==================================================
+   基本設定
+================================================== */
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
@@ -15,9 +24,11 @@
 
 html,
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  min-height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -31,7 +42,7 @@ body {
     linear-gradient(
       180deg,
       #fff5f8 0%,
-      #fffaf7 45%,
+      #fffaf7 48%,
       #eefaff 100%
     );
 
@@ -43,17 +54,35 @@ button {
   cursor: pointer;
 }
 
+
+/* ==================================================
+   アプリ全体
+   スマホ画面内に固定
+================================================== */
+
 .app {
-  min-height: 100vh;
-  padding: 16px;
+  width: 100%;
+  height: 100dvh;
+
+  padding:
+    max(8px, env(safe-area-inset-top))
+    max(10px, env(safe-area-inset-right))
+    max(8px, env(safe-area-inset-bottom))
+    max(10px, env(safe-area-inset-left));
 
   display: flex;
   justify-content: center;
+  align-items: stretch;
+
+  overflow: hidden;
 }
 
 .phone {
   width: 100%;
   max-width: 480px;
+  height: 100%;
+
+  overflow: hidden;
 }
 
 
@@ -62,20 +91,22 @@ button {
 ================================================== */
 
 .header {
+  height: 7%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 12px;
+  padding: 0 5px;
 }
 
 .header-title {
-  font-size: 24px;
+  font-size: clamp(18px, 5vw, 24px);
   font-weight: 900;
 }
 
 .header-time {
-  font-size: 22px;
+  font-size: clamp(18px, 5vw, 22px);
   font-weight: 900;
 }
 
@@ -84,7 +115,24 @@ button {
    ホーム画面
 ================================================== */
 
+#homeScreen {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
 .welcome {
+  width: 100%;
+  height: 93%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   background:
     linear-gradient(
       180deg,
@@ -92,14 +140,17 @@ button {
       #ffffff 100%
     );
 
-  border-radius: 30px;
+  border-radius: 28px;
 
-  padding: 20px 16px 18px;
+  padding:
+    2.5%
+    3.5%
+    2.5%;
 
   text-align: center;
 
   box-shadow:
-    0 8px 25px rgba(100, 80, 80, .12);
+    0 7px 22px rgba(100, 80, 80, .12);
 
   border: 2px solid #ffd8e3;
 
@@ -116,37 +167,46 @@ button {
   display: block;
 
   width: 100%;
-  max-width: 390px;
+  height: 26%;
 
-  height: 190px;
+  min-height: 0;
 
-  margin: 0 auto 14px;
+  margin: 0 auto;
 
   object-fit: cover;
 
-  border-radius: 24px;
+  border-radius: 22px;
 
-  border: 5px solid #ffffff;
+  border: 4px solid #ffffff;
 
   box-shadow:
-    0 6px 18px rgba(255, 120, 150, .25);
+    0 5px 16px rgba(255, 120, 150, .23);
 
   background: #e9f8ff;
 }
 
 
 /* ==================================================
-   おはよう！〇〇〇だよ！
+   おはようメッセージ
+   1行目：おはよう！
+   2行目：〇〇〇だよ！
 ================================================== */
 
 .greeting {
   width: 100%;
 
-  margin: 0 auto 15px;
+  min-height: 19%;
 
-  padding: 15px 10px;
+  margin: 1% auto;
 
-  border-radius: 24px;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
 
   background:
     linear-gradient(
@@ -159,9 +219,9 @@ button {
 
   color: #f05278;
 
-  font-size: clamp(30px, 8vw, 40px);
+  font-size: clamp(27px, 7.5vw, 40px);
 
-  line-height: 1.25;
+  line-height: 1.08;
 
   font-weight: 1000;
 
@@ -171,31 +231,42 @@ button {
     0 2px 0 #ffffff;
 
   box-shadow:
-    0 5px 14px rgba(255, 100, 140, .10);
+    0 4px 12px rgba(255, 100, 140, .10);
+}
+
+.greeting-line {
+  display: block;
+  width: 100%;
 }
 
 
 /* ==================================================
-   日付・天気
+   日付
 ================================================== */
 
 .info-card {
+  width: 100%;
+
   background: #ffffff;
 
-  border-radius: 20px;
+  border-radius: 17px;
 
-  padding: 13px;
-
-  margin-top: 10px;
+  padding: 7px 8px;
 
   box-shadow:
-    0 4px 12px rgba(80, 80, 80, .08);
+    0 3px 9px rgba(80, 80, 80, .07);
 }
 
 .date {
-  font-size: 25px;
+  font-size: clamp(19px, 5.5vw, 25px);
+  line-height: 1.15;
   font-weight: 900;
 }
+
+
+/* ==================================================
+   天気
+================================================== */
 
 .weather {
   display: flex;
@@ -203,26 +274,35 @@ button {
   align-items: center;
   justify-content: center;
 
-  gap: 12px;
+  gap: 8px;
 
-  font-size: 22px;
+  font-size: clamp(16px, 4.5vw, 22px);
+
   font-weight: 800;
 }
 
 .weather-icon {
-  font-size: 48px;
+  font-size: clamp(34px, 10vw, 48px);
+  line-height: 1;
 }
 
 .weather strong {
-  font-size: 30px;
+  font-size: clamp(25px, 7vw, 30px);
   color: #3999e8;
 }
 
+
+/* ==================================================
+   応援メッセージ
+================================================== */
+
 .encourage {
-  font-size: 18px;
+  font-size: clamp(14px, 4vw, 18px);
+  line-height: 1.15;
+
   font-weight: 700;
 
-  margin-top: 10px;
+  padding: 2px 0;
 }
 
 
@@ -234,13 +314,15 @@ button {
 .start-button {
   width: 100%;
 
-  margin-top: 16px;
+  min-height: 10%;
+
+  margin: 0;
 
   border: 0;
 
   border-radius: 50px;
 
-  padding: 18px;
+  padding: 8px;
 
   background:
     linear-gradient(
@@ -251,12 +333,12 @@ button {
 
   color: #ffffff;
 
-  font-size: 27px;
+  font-size: clamp(22px, 6.5vw, 27px);
 
   font-weight: 1000;
 
   box-shadow:
-    0 7px 16px rgba(255, 80, 120, .25);
+    0 6px 14px rgba(255, 80, 120, .25);
 }
 
 .start-button:active {
@@ -266,26 +348,38 @@ button {
 
 /* ==================================================
    質問画面
+   1画面固定
 ================================================== */
 
 .question-screen {
-  display: none;
+  width: 100%;
+  height: 100%;
 
-  min-height: calc(100vh - 32px);
+  display: none;
 
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
 }
 
 .question-card {
   width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   background:
     rgba(255, 255, 255, .98);
 
   border-radius: 28px;
 
-  padding: 24px 15px 22px;
+  padding:
+    5%
+    4%;
 
   box-shadow:
     0 8px 24px rgba(90, 80, 80, .12);
@@ -293,22 +387,28 @@ button {
   border: 2px solid #ffd8e3;
 
   text-align: center;
+
+  overflow: hidden;
 }
 
 .question-icon {
-  font-size: 78px;
+  font-size: clamp(55px, 17vw, 78px);
 
-  margin-bottom: 6px;
+  line-height: 1;
+
+  margin-bottom: 2%;
 }
 
 .question {
-  font-size: 36px;
+  width: 100%;
 
-  line-height: 1.35;
+  font-size: clamp(29px, 8.5vw, 36px);
+
+  line-height: 1.25;
 
   font-weight: 1000;
 
-  margin: 8px 0 24px;
+  margin: 1% 0 4%;
 }
 
 
@@ -319,17 +419,17 @@ button {
 .answer {
   width: 100%;
 
-  min-height: 88px;
+  min-height: 17%;
 
   border: 0;
 
   border-radius: 50px;
 
-  margin-top: 13px;
+  margin-top: 2.5%;
 
   color: #ffffff;
 
-  font-size: 32px;
+  font-size: clamp(27px, 8vw, 32px);
 
   font-weight: 1000;
 
@@ -368,12 +468,15 @@ button {
 ================================================== */
 
 .thanks {
-  display: none;
+  width: 100%;
+  height: 100%;
 
-  min-height: calc(100vh - 32px);
+  display: none;
 
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
 }
 
 .thanks-card {
@@ -399,7 +502,7 @@ button {
 }
 
 .thanks-title {
-  font-size: 36px;
+  font-size: clamp(30px, 9vw, 36px);
 
   font-weight: 1000;
 
@@ -407,9 +510,9 @@ button {
 }
 
 .thanks-text {
-  font-size: 22px;
+  font-size: clamp(18px, 5.5vw, 22px);
 
-  line-height: 1.6;
+  line-height: 1.5;
 
   font-weight: 800;
 
@@ -418,35 +521,91 @@ button {
 
 
 /* ==================================================
-   小さい画面への調整
+   特に高さの低いスマホ
 ================================================== */
 
-@media (max-width: 360px) {
-
-  .app {
-    padding: 10px;
-  }
+@media (max-height: 700px) {
 
   .welcome {
-    padding: 15px 12px;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
   }
 
   .photo {
-    height: 165px;
+    height: 23%;
   }
 
   .greeting {
-    font-size: 29px;
-    padding: 13px 7px;
+    min-height: 17%;
+    font-size: clamp(25px, 7vw, 34px);
+  }
+
+  .info-card {
+    padding: 5px 7px;
+  }
+
+  .encourage {
+    font-size: 13px;
+  }
+
+  .start-button {
+    min-height: 9%;
+    font-size: 22px;
+  }
+
+  .question-icon {
+    font-size: 58px;
   }
 
   .question {
-    font-size: 31px;
+    font-size: 28px;
   }
 
   .answer {
-    min-height: 78px;
-    font-size: 29px;
+    min-height: 16%;
+    font-size: 27px;
+  }
+}
+
+
+/* ==================================================
+   さらに小さい高さ
+================================================== */
+
+@media (max-height: 600px) {
+
+  .photo {
+    height: 21%;
+  }
+
+  .greeting {
+    min-height: 16%;
+    font-size: 25px;
+  }
+
+  .date {
+    font-size: 18px;
+  }
+
+  .weather {
+    font-size: 15px;
+  }
+
+  .weather-icon {
+    font-size: 30px;
+  }
+
+  .weather strong {
+    font-size: 22px;
+  }
+
+  .encourage {
+    display: none;
+  }
+
+  .start-button {
+    min-height: 9%;
+    font-size: 21px;
   }
 }
 
@@ -455,6 +614,7 @@ button {
 
 
 <body>
+
 
 <div class="app">
 
@@ -467,6 +627,7 @@ button {
 
 <div id="homeScreen">
 
+
   <div class="header">
 
     <div class="header-title">
@@ -476,7 +637,9 @@ button {
     <div
       class="header-time"
       id="headerTime">
+
       8:00
+
     </div>
 
   </div>
@@ -487,7 +650,7 @@ button {
 
     <!-- ==================================================
          兄貴の写真
-         後でここを自分の写真に差し替え
+         後で写真を差し替え
     ================================================== -->
 
     <img
@@ -498,11 +661,19 @@ button {
 
     <!-- ==================================================
          おはようメッセージ
-         〇〇〇 ← ここを後で3文字に差し替え
+         〇〇〇 ← 後で3文字に差し替え
     ================================================== -->
 
     <div class="greeting">
-      おはよう！〇〇〇だよ！
+
+      <span class="greeting-line">
+        おはよう！
+      </span>
+
+      <span class="greeting-line">
+        〇〇〇だよ！
+      </span>
+
     </div>
 
 
@@ -548,8 +719,14 @@ button {
     </div>
 
 
+    <!-- ==================================================
+         応援メッセージ
+    ================================================== -->
+
     <div class="encourage">
+
       今日も元気に過ごしましょうね ❤️
+
     </div>
 
 
@@ -684,7 +861,6 @@ button {
 
 /* ==================================================
    質問一覧
-   順番は指定どおり
 ================================================== */
 
 const questions = [
@@ -727,7 +903,6 @@ let currentQuestion = 0;
 let answers = [];
 
 
-
 /* ==================================================
    「はじめる」
 ================================================== */
@@ -739,36 +914,23 @@ function startCheck() {
   answers = [];
 
 
-  /*
-    ホーム画面を隠す
-  */
-
   document
     .getElementById("homeScreen")
     .style.display = "none";
 
-
-  /*
-    質問画面を表示
-  */
 
   document
     .getElementById("questionScreen")
     .style.display = "flex";
 
 
-  /*
-    最初の質問
-  */
-
   showQuestion();
 
 }
 
 
-
 /* ==================================================
-   質問を表示
+   質問表示
 ================================================== */
 
 function showQuestion() {
@@ -791,18 +953,13 @@ function showQuestion() {
 }
 
 
-
 /* ==================================================
    はい／いいえ
-   押したら即座に次の質問
+   押したら次の画面へ
 ================================================== */
 
 function answer(value) {
 
-
-  /*
-    回答を保存
-  */
 
   answers.push({
 
@@ -816,16 +973,8 @@ function answer(value) {
   });
 
 
-  /*
-    次の質問へ
-  */
-
   currentQuestion++;
 
-
-  /*
-    全質問終了
-  */
 
   if (
     currentQuestion >=
@@ -843,11 +992,6 @@ function answer(value) {
       .style.display = "flex";
 
 
-    /*
-      現段階では確認用に
-      コンソールへ回答を保存
-    */
-
     console.log(
       "回答結果:",
       answers
@@ -859,14 +1003,9 @@ function answer(value) {
   }
 
 
-  /*
-    次の質問を表示
-  */
-
   showQuestion();
 
 }
-
 
 
 /* ==================================================
@@ -914,19 +1053,11 @@ function updateClock() {
     weekdays[now.getDay()];
 
 
-  /*
-    ヘッダー時刻
-  */
-
   document
     .getElementById("headerTime")
     .textContent =
     `${hour}:${minute}`;
 
-
-  /*
-    日付
-  */
 
   document
     .getElementById("dateText")
