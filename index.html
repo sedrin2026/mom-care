@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width,
-  initial-scale=1.0,
-  maximum-scale=1.0,
-  user-scalable=no"
->
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
 
 <title>朝のチェック</title>
 
@@ -107,24 +105,27 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  padding: 0 12px 0 8px;
+  position: relative;
+
+  padding: 0 10px;
 }
 
-.top-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
 
-  font-weight: 1000;
-}
+/* ① 家アイコンを一回り小さく */
 
 .home-icon {
-  font-size: clamp(40px, 11vw, 55px);
+  position: absolute;
+  left: 9px;
+
+  font-size: clamp(31px, 8vw, 43px);
 
   line-height: 1;
 }
+
+
+/* ② 朝のチェックを中央 */
 
 .title {
   font-size: clamp(25px, 7vw, 36px);
@@ -133,24 +134,15 @@ body {
 
   letter-spacing: -1px;
 
-  white-space: nowrap;
-}
-
-.title-heart {
-  color: #ff5c94;
-
-  font-size: .8em;
-
-  vertical-align: top;
-}
-
-.clock {
-  font-size: clamp(29px, 8vw, 39px);
-
-  font-weight: 1000;
+  text-align: center;
 
   white-space: nowrap;
 }
+
+
+/* =====================================================
+   ③ 時間は削除
+===================================================== */
 
 
 /* =====================================================
@@ -220,7 +212,7 @@ body {
 
 
 /* =====================================================
-   GREETING BANNER
+   ④ GREETING BANNER
 ===================================================== */
 
 .greeting {
@@ -260,33 +252,59 @@ body {
 }
 
 
-/* decorative flowers */
+/* =====================================================
+   桜アイコン
+   薄く表示して文字を優先
+===================================================== */
 
-.greeting::before {
-  content: "🌸";
-
+.sakura {
   position: absolute;
 
-  left: 18px;
-  top: 12px;
+  width: 55px;
+  height: 55px;
 
-  font-size: 42px;
+  opacity: .24;
+
+  pointer-events: none;
 }
 
-.greeting::after {
-  content: "🌸";
-
-  position: absolute;
-
-  right: 18px;
-  top: 12px;
-
-  font-size: 42px;
+.sakura-left {
+  left: 14px;
+  top: 14px;
 }
 
+.sakura-right {
+  right: 14px;
+  top: 14px;
+}
+
+.sakura-bottom-left {
+  left: 25px;
+  bottom: 12px;
+
+  transform: scale(.72);
+
+  opacity: .18;
+}
+
+.sakura-bottom-right {
+  right: 25px;
+  bottom: 12px;
+
+  transform: scale(.72);
+
+  opacity: .18;
+}
+
+
+/* =====================================================
+   GREETING TEXT
+===================================================== */
 
 .greeting-line {
   display: block;
+
+  width: 100%;
 
   color: #f31f5d;
 
@@ -294,12 +312,17 @@ body {
 
   line-height: .95;
 
+  text-align: center;
+
   text-shadow:
     0 3px 0 #ffffff,
     0 5px 8px rgba(210, 50, 90, .12);
 
   z-index: 2;
 }
+
+
+/* 既存の文字サイズを維持 */
 
 .greeting-line:first-child {
   font-size: clamp(48px, 14vw, 76px);
@@ -313,7 +336,7 @@ body {
 
 
 /* =====================================================
-   DATE
+   ⑤ DATE
 ===================================================== */
 
 .date-box {
@@ -332,24 +355,30 @@ body {
     #fffdfa;
 
   display: flex;
-  align-items: center;
 
-  padding: 0 14px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 10px;
 
   box-shadow:
     0 4px 10px rgba(180, 130, 70, .07);
+
+  overflow: hidden;
 }
+
+
+/* カレンダー削除 */
 
 .calendar-icon {
-  width: 18%;
-
-  text-align: center;
-
-  font-size: clamp(42px, 12vw, 61px);
+  display: none;
 }
 
+
+/* 日時を枠内中央いっぱいに */
+
 .date-text {
-  flex: 1;
+  width: 100%;
 
   text-align: center;
 
@@ -360,11 +389,15 @@ body {
   letter-spacing: -1px;
 
   white-space: nowrap;
+
+  line-height: 1;
+
+  overflow: hidden;
 }
 
 
 /* =====================================================
-   WEATHER
+   ⑥ WEATHER
 ===================================================== */
 
 .weather-box {
@@ -390,29 +423,52 @@ body {
   overflow: hidden;
 }
 
-.sun {
+
+/* 「今日の 天気は」を左側 */
+
+.weather-label {
   width: 28%;
 
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
   text-align: center;
 
-  font-size: clamp(63px, 18vw, 90px);
-
-  line-height: 1;
-}
-
-.weather-message {
-  flex: 1;
-
-  text-align: center;
+  font-size: clamp(21px, 5.8vw, 30px);
 
   font-weight: 1000;
 
-  line-height: 1;
+  line-height: 1.08;
+
+  flex-shrink: 0;
 }
 
-.weather-small {
-  font-size: clamp(20px, 5.5vw, 29px);
+
+/* 晴れ＋太陽 */
+
+.weather-result {
+  flex: 1;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  white-space: nowrap;
 }
+
+
+/* 晴れ */
 
 .weather-big {
   color: #168be8;
@@ -421,17 +477,28 @@ body {
 
   font-weight: 1000;
 
+  line-height: 1;
+
   text-shadow:
     0 3px 0 #ffffff;
 }
 
-.weather-last {
-  font-size: clamp(23px, 6vw, 32px);
+
+/* 晴れと同じくらいの太陽 */
+
+.weather-sun {
+  font-size: clamp(45px, 12vw, 66px);
+
+  line-height: 1;
+
+  display: flex;
+
+  align-items: center;
 }
 
 
 /* =====================================================
-   ENCOURAGEMENT
+   ⑦ MESSAGE
 ===================================================== */
 
 .encourage {
@@ -441,6 +508,7 @@ body {
   flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -455,29 +523,9 @@ body {
   font-weight: 1000;
 }
 
-.encourage::before {
-  content: "🌸";
-
-  position: absolute;
-
-  left: 0;
-
-  font-size: 42px;
-}
-
-.encourage::after {
-  content: "🌸";
-
-  position: absolute;
-
-  right: 0;
-
-  font-size: 42px;
-}
-
 
 /* =====================================================
-   START BUTTON
+   ⑧ START BUTTON
 ===================================================== */
 
 .start-button {
@@ -511,20 +559,20 @@ body {
     0 3px 3px rgba(180, 20, 65, .25);
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  gap: 16px;
-
   padding: 0;
+
+  gap: 0;
 }
+
+
+/* ▶を削除したので横方向いっぱいに */
 
 .start-button:active {
   transform: scale(.98);
-}
-
-.start-play {
-  font-size: .8em;
 }
 
 
@@ -560,6 +608,7 @@ body {
     );
 
   display: flex;
+
   flex-direction: column;
 
   align-items: center;
@@ -681,7 +730,7 @@ body {
 
 
 /* =====================================================
-   SMALL HEIGHT DEVICES
+   SMALL HEIGHT
 ===================================================== */
 
 @media (max-height: 720px) {
@@ -720,12 +769,16 @@ body {
 
   .encourage {
     height: 11.5%;
-    font-size: clamp(20px, 5.5vw, 27px);
+
+    font-size:
+      clamp(20px, 5.5vw, 27px);
   }
 
   .start-button {
     height: 13%;
-    font-size: clamp(32px, 9vw, 42px);
+
+    font-size:
+      clamp(32px, 9vw, 42px);
   }
 }
 
@@ -764,11 +817,7 @@ body {
     height: 14%;
   }
 
-  .sun {
-    font-size: 55px;
-  }
-
-  .weather-small {
+  .weather-label {
     font-size: 17px;
   }
 
@@ -776,17 +825,19 @@ body {
     font-size: 43px;
   }
 
-  .weather-last {
-    font-size: 19px;
+  .weather-sun {
+    font-size: 42px;
   }
 
   .encourage {
     height: 10%;
+
     font-size: 19px;
   }
 
   .start-button {
     height: 13%;
+
     font-size: 31px;
   }
 }
@@ -809,36 +860,28 @@ body {
 <div id="homeScreen">
 
 
-  <!-- TOP -->
+  <!-- ===================================================
+       ①② 上部
+  ==================================================== -->
 
   <div class="topbar">
 
-    <div class="top-left">
+    <!-- 小さくした家アイコン -->
 
-      <div class="home-icon">
-        🏠
-      </div>
-
-      <div class="title">
-        朝のチェック
-        <span class="title-heart">♥</span>
-      </div>
-
+    <div class="home-icon">
+      🏠
     </div>
 
 
-    <div
-      class="clock"
-      id="headerTime">
+    <!-- 中央配置・ハート削除 -->
 
-      8:00
-
+    <div class="title">
+      朝のチェック
     </div>
 
   </div>
 
 
-  <!-- CONTENT -->
 
   <div class="home-content">
 
@@ -849,13 +892,6 @@ body {
 
     <div class="photo-wrap">
 
-      <!--
-        ここを後で自分の写真に変更
-
-        例：
-        src="mom-check-photo.jpg"
-      -->
-
       <img
         class="photo"
         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000"
@@ -864,11 +900,175 @@ body {
     </div>
 
 
+
     <!-- =================================================
-         GREETING
+         ④ GREETING
     ================================================== -->
 
     <div class="greeting">
+
+
+      <!-- 左上の桜 -->
+
+      <svg
+        class="sakura sakura-left"
+        viewBox="0 0 100 100"
+        aria-hidden="true">
+
+        <g fill="#ff8db2">
+
+          <ellipse cx="50" cy="27"
+                   rx="17" ry="28"/>
+
+          <ellipse cx="73" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(35 73 48)"/>
+
+          <ellipse cx="61" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(72 61 73)"/>
+
+          <ellipse cx="35" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(-72 35 73)"/>
+
+          <ellipse cx="27" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(-35 27 48)"/>
+
+        </g>
+
+        <circle
+          cx="50"
+          cy="51"
+          r="11"
+          fill="#ffd86a"/>
+
+      </svg>
+
+
+
+      <!-- 右上の桜 -->
+
+      <svg
+        class="sakura sakura-right"
+        viewBox="0 0 100 100"
+        aria-hidden="true">
+
+        <g fill="#ff8db2">
+
+          <ellipse cx="50" cy="27"
+                   rx="17" ry="28"/>
+
+          <ellipse cx="73" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(35 73 48)"/>
+
+          <ellipse cx="61" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(72 61 73)"/>
+
+          <ellipse cx="35" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(-72 35 73)"/>
+
+          <ellipse cx="27" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(-35 27 48)"/>
+
+        </g>
+
+        <circle
+          cx="50"
+          cy="51"
+          r="11"
+          fill="#ffd86a"/>
+
+      </svg>
+
+
+
+      <!-- 左下の薄い桜 -->
+
+      <svg
+        class="sakura sakura-bottom-left"
+        viewBox="0 0 100 100"
+        aria-hidden="true">
+
+        <g fill="#ff8db2">
+
+          <ellipse cx="50" cy="27"
+                   rx="17" ry="28"/>
+
+          <ellipse cx="73" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(35 73 48)"/>
+
+          <ellipse cx="61" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(72 61 73)"/>
+
+          <ellipse cx="35" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(-72 35 73)"/>
+
+          <ellipse cx="27" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(-35 27 48)"/>
+
+        </g>
+
+        <circle
+          cx="50"
+          cy="51"
+          r="11"
+          fill="#ffd86a"/>
+
+      </svg>
+
+
+
+      <!-- 右下の薄い桜 -->
+
+      <svg
+        class="sakura sakura-bottom-right"
+        viewBox="0 0 100 100"
+        aria-hidden="true">
+
+        <g fill="#ff8db2">
+
+          <ellipse cx="50" cy="27"
+                   rx="17" ry="28"/>
+
+          <ellipse cx="73" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(35 73 48)"/>
+
+          <ellipse cx="61" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(72 61 73)"/>
+
+          <ellipse cx="35" cy="73"
+                   rx="17" ry="28"
+                   transform="rotate(-72 35 73)"/>
+
+          <ellipse cx="27" cy="48"
+                   rx="28" ry="17"
+                   transform="rotate(-35 27 48)"/>
+
+        </g>
+
+        <circle
+          cx="50"
+          cy="51"
+          r="11"
+          fill="#ffd86a"/>
+
+      </svg>
+
+
+
+      <!-- 中央文字 -->
 
       <span class="greeting-line">
         おはよう！
@@ -881,15 +1081,12 @@ body {
     </div>
 
 
+
     <!-- =================================================
-         DATE
+         ⑤ DATE
     ================================================== -->
 
     <div class="date-box">
-
-      <div class="calendar-icon">
-        📅
-      </div>
 
       <div
         class="date-text"
@@ -902,64 +1099,70 @@ body {
     </div>
 
 
+
     <!-- =================================================
-         WEATHER
+         ⑥ WEATHER
     ================================================== -->
 
     <div class="weather-box">
 
-      <div class="sun">
-        ☀️
+
+      <!-- 左側 -->
+
+      <div class="weather-label">
+
+        <span>
+          今日の
+        </span>
+
+        <span>
+          天気は
+        </span>
+
       </div>
 
-      <div class="weather-message">
 
-        <div class="weather-small">
-          今日の天気は
-        </div>
+      <!-- 右側 -->
 
-        <div class="weather-big">
+      <div class="weather-result">
+
+        <span class="weather-big">
           晴れ
-        </div>
+        </span>
 
-        <div class="weather-last">
-          です
-        </div>
+        <span class="weather-sun">
+          🌞
+        </span>
 
       </div>
+
 
     </div>
 
 
+
     <!-- =================================================
-         MESSAGE
+         ⑦ MESSAGE
     ================================================== -->
 
     <div class="encourage">
 
       今日も元気に<br>
-      過ごしましょうね ❤️
+      過ごしましょうね💪
 
     </div>
 
 
+
     <!-- =================================================
-         START
+         ⑧ START
     ================================================== -->
 
     <button
       class="start-button"
       onclick="startCheck()">
 
-      <span class="start-play">
-        ▶
-      </span>
-
       はじめる
-
-      <span>
-        ›
-      </span>
 
     </button>
 
@@ -1056,6 +1259,7 @@ body {
 </div>
 
 
+
 <script>
 
 /* =====================================================
@@ -1112,16 +1316,13 @@ function startCheck() {
 
   answers = [];
 
-
   document
     .getElementById("homeScreen")
     .style.display = "none";
 
-
   document
     .getElementById("questionScreen")
     .style.display = "flex";
-
 
   showQuestion();
 
@@ -1137,12 +1338,10 @@ function showQuestion() {
   const q =
     questions[currentQuestion];
 
-
   document
     .getElementById("questionIcon")
     .textContent =
     q.icon;
-
 
   document
     .getElementById("questionText")
@@ -1182,11 +1381,9 @@ function answer(value) {
       .getElementById("questionScreen")
       .style.display = "none";
 
-
     document
       .getElementById("thanksScreen")
       .style.display = "flex";
-
 
     console.log(
       "回答結果",
@@ -1244,12 +1441,6 @@ function updateClock() {
     weekdays[
       now.getDay()
     ];
-
-
-  document
-    .getElementById("headerTime")
-    .textContent =
-    `${hour}:${minute}`;
 
 
   document
